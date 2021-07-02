@@ -4,6 +4,7 @@ import {
     CloseOutlined
 } from '@ant-design/icons'
 // import FontAwesome from 'react-fontawesome'
+import PropTypes from 'prop-types'
 
 const FileSearch = ({ title, onFileSearch }) => {
     const [inputActive, setInputActive] = useState(false)
@@ -72,6 +73,15 @@ const FileSearch = ({ title, onFileSearch }) => {
             }
         </div>
     )
+}
+
+FileSearch.propTypes = {
+    title: PropTypes.string,
+    onFileSearch: PropTypes.func.isRequired
+}
+
+FileSearch.defaultProps = {
+    title: '我的云文档'
 }
 
 export default FileSearch
