@@ -1,4 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
+import {
+    SearchOutlined,
+    CloseOutlined
+} from '@ant-design/icons'
+// import FontAwesome from 'react-fontawesome'
 
 const FileSearch = ({ title, onFileSearch }) => {
     const [inputActive, setInputActive] = useState(false)
@@ -29,41 +34,41 @@ const FileSearch = ({ title, onFileSearch }) => {
     useEffect(() => {
         if (inputActive) {
             node.current.focus()
-        }       
+        }
     }, [inputActive])
 
     return (
-        <div className='alert alert-primary'>
+        <div className='alert alert-primary d-flex justify-content-between align-items-center'>
             {
                 !inputActive &&
-                <div className='d-flex justify-content-between align-items-center'>
+                <>
                     <span>{title}</span>
-                    <button 
-                        type='button' 
-                        className='btn btn-primary'
+                    <button
+                        type='button'
+                        className='icon-btn'
                         onClick={() => setInputActive(true)}
                     >
-                        搜索
+                        <SearchOutlined />
                     </button>
-                </div>
+                </>
             }
             {
                 inputActive &&
-                <div className='row'>
-                    <input 
-                        className='form-control col'
+                <>
+                    <input
+                        className='form-control'
                         value={value}
                         ref={node}
                         onChange={e => setValue(e.target.value)}
                     />
-                    <button 
-                        type='button' 
-                        className='btn btn-primary col-4'
+                    <button
+                        type='button'
+                        className='icon-btn'
                         onClick={closeSearch}
                     >
-                        关闭
+                        <CloseOutlined />
                     </button>
-                </div>
+                </>
             }
         </div>
     )
