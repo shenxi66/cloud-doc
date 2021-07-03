@@ -5,30 +5,26 @@ import {
 } from '@ant-design/icons'
 // import FontAwesome from 'react-fontawesome'
 import PropTypes from 'prop-types'
+import useKeyPress from '../hooks/useKeyPress'
 
 const FileSearch = ({ title, onFileSearch }) => {
     const [inputActive, setInputActive] = useState(false)
     const [value, setValue] = useState('')
     const node = useRef(null)
+    const enterPressed = useKeyPress(13)
+    const escPressed = useKeyPress(27)
 
-    const closeSearch = e => {
-        e.preventDefault()
+    const closeSearch = () => {
         setInputActive(false)
         setValue('')
     }
 
     useEffect(() => {
-        const handleInputEvent = e => {
-            const { keyCode } = e
-            if (keyCode === 13 && inputActive) {
-                onFileSearch(value)
-            } else if (keyCode === 27 && inputActive) {
-                closeSearch(e)
-            }
+        if (enterPressed && inputActive) {
+            onFileSearch(value)
         }
-        document.addEventListener('keyup', handleInputEvent)
-        return () => {
-            document.removeEventListener('keyup', handleInputEvent)
+        if (escPressed && inputActive) {
+            closeSearch()
         }
     })
 
