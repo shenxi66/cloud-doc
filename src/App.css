@@ -3,3 +3,12 @@
   border: none;
   color: inherit;
 }
+
+.file-li {
+  display: flex;
+  justify-content: center;
+}
+
+.c-link {
+  cursor: pointer;
+}
