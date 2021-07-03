@@ -12,3 +12,7 @@
 .c-link {
   cursor: pointer;
 }
+
+.no-padding {
+  padding: 0px !important;
+}
