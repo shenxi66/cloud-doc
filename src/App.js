@@ -1,12 +1,16 @@
 import React from 'react'
 import { FolderAddOutlined, ImportOutlined } from '@ant-design/icons'
+import SimpleMDE from "react-simplemde-editor"
+
 import FileSearch from './components/FileSearch'
 import FileList from './components/FileList'
 import defaultFiles from './utils/defaultFiles'
 import BottomBtn from './components/BottomBtn'
+import TabList from './components/TabList'
 
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "easymde/dist/easymde.min.css"
 
 function App() {
   return (
@@ -41,8 +45,21 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="col-9 bg-primary right-panel">
-          <h1>this is the right </h1>
+        <div className="col-9 right-panel no-padding">
+          <TabList 
+            files={defaultFiles}
+            activeId={1}
+            unsaveIds={[1, 2]}
+            onTabClick={(id) => {console.log(id)}}
+            onCloseTab={id => {console.log('closeing', id)}}
+          />
+          <SimpleMDE 
+            value={defaultFiles[1].body} 
+            onChange={value => console.log(value)} 
+            options={{
+              minHeight: '515px'
+            }}
+          />
         </div>
       </div>
     </div>

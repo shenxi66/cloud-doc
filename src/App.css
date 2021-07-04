@@ -16,3 +16,8 @@
 .no-padding {
   padding: 0px !important;
 }
+
+.vert-mid {
+  display: flex;
+  align-items: center;
+}
